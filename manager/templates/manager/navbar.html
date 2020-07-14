@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="{% url 'manager:index' %}">CMS</a>
+    <a class="navbar-brand" href="{% url 'index' %}">CMS</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -7,16 +7,16 @@
       <ul class="navbar-nav">
         {% if request.user.is_staff %}
         <li class="nav-item active">
-          <a class="nav-link" href="{% url 'manager:index' %}">Dashboard 
+          <a class="nav-link" href="{% url 'index' %}">Dashboard 
               <!-- <span class="sr-only">(current)</span> -->
             </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'manager:products' %}">Products</a>
+          <a class="nav-link" href="{% url 'products' %}">Products</a>
         </li>
         {% else %}
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'manager:account' %}">Settings</a>
+          <a class="nav-link" href="{% url 'account' %}">Settings</a>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link disabled" href="#">Disabled</a>
@@ -26,6 +26,6 @@
     </div>
     {% if user.is_authenticated %}
     <span class="hello-msg">Hello, {{request.user}}</span>
-  <span ><a  class="hello-msg" href="{% url 'manager:logout' %}">Logout</a></span>
+  <span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
   {% endif %}
   </nav>

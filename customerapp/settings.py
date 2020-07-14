@@ -25,9 +25,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '3=#wa8_e^)kxg*ay!4rq2-zm)oagn8ujm660-9#*^ehn)9889o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['customerapp-v1.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'manager.apps.ManagerConfig',
     'django_filters',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -79,12 +80,12 @@ WSGI_APPLICATION = 'customerapp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'customerapp',
-        'USER': 'admin',
-        'PASSWORD': 'Private@123!',
-        'HOST': 'localhost',
-        'PORT': ''
+        'USER': 'simondev',
+        'PASSWORD': 'Private123',
+        'HOST': 'database-1.cxqnyuqb5bww.us-east-2.rds.amazonaws.com',
+        'PORT': '5432'
     }
 }
 
@@ -139,3 +140,21 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
+
+# SMTP CONFIGURATIONS
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '587'
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'simonokello.dev@gmail.com'
+EMAIL_HOST_PASSWORD = 'Private@123!'
+
+# S3 BUCKET CONFIGURATION
+AWS_ACCESS_KEY_ID = 'AKIAUCMCLHWOGRGPRBNG'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'customerapp-bucket'
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storag'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

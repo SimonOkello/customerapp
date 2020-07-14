@@ -18,7 +18,7 @@
 				</tr>
 				{% for customer in customers %}
 				<tr>
-					<td><a class="btn btn-sm btn-primary" href="{% url 'manager:customer' customer.id %}">View</a></td>
+					<td><a class="btn btn-sm btn-primary" href="{% url 'customer' customer.id %}">View</a></td>
 					<td>{{customer.name}}</td>
 					<td>{{customer.name}}</td>
 				</tr>
@@ -47,8 +47,8 @@
 					<td>{{order.note}}</td>
 					<td>{{order.date_created}}</td>
 					<td>{{order.status}}</td>
-					<td><a class="btn btn-sm btn-info" href="{% url 'manager:update_order' order.id %}">Edit</a></td>
-					<td><a class="btn btn-sm btn-danger" href="{% url 'manager:delete_order' order.id %}">Delete</a></td>
+					<td><a class="btn btn-sm btn-info" href="{% url 'update_order' order.id %}">Edit</a></td>
+					<td><a class="btn btn-sm btn-danger" href="{% url 'delete_order' order.id %}">Delete</a></td>
 				</tr>
 				{% endfor %}
 		

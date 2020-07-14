@@ -22,15 +22,8 @@ def registerPage(request):
         if form.is_valid():
             user = form.save()
             username = form.cleaned_data.get('username')
-            group = Group.objects.get(name='customer')
-            user.groups.add(group)
-            Customer.objects.create(
-                user=user,
-                name=user.username,
-                email=user.email
-            )
             messages.success(request, 'Account was created for '+username)
-            return redirect('manager:login')
+            return redirect('login')
     context = {'form': form}
     return render(request, 'manager/register.html', context)
 
@@ -43,20 +36,20 @@ def loginPage(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('manager:index')
+            return redirect('index')
         else:
             messages.error(request, 'Username/Password Incorrect')
-            return redirect('manager:login')
+            return redirect('login')
 
     return render(request, 'manager/login.html', {})
 
 
 def logoutUser(request):
     logout(request)
-    return redirect('manager:login')
+    return redirect('login')
 
 
-@login_required(login_url='manager:login')
+@login_required(login_url='login')
 @allowed_users(allowed_roles=['customer'])
 def userPage(request):
     orders = request.user.customer.order_set.all()
@@ -68,7 +61,7 @@ def userPage(request):
     return render(request, 'manager/user.html', context)
 
 
-@login_required(login_url='manager:login')
+@login_required(login_url='login')
 @allowed_users(allowed_roles=['customer'])
 def accountSettings(request):
     customer = request.user.customer
@@ -81,7 +74,7 @@ def accountSettings(request):
     return render(request, 'manager/accountSettings.html', context)
 
 
-@login_required(login_url='manager:login')
+@login_required(login_url='login')
 @admin_only
 def index(request):
     customers = Customer.objects.all()
@@ -95,7 +88,7 @@ def index(request):
     return render(request, 'manager/index.html', context)
 
 
-@login_required(login_url='manager:login')
+@login_required(login_url='login')
 @allowed_users(allowed_roles=['admin'])
 def customer(request, pk):
     customer = get_object_or_404(Customer, id=pk)
@@ -108,14 +101,14 @@ def customer(request, pk):
     return render(request, 'manager/customer.html', context)
 
 
-@login_required(login_url='manager:login')
+@login_required(login_url='login')
 @allowed_users(allowed_roles=['admin'])
 def product(request):
     products = Product.objects.all()
     return render(request, 'manager/products.html', {'products': products})
 
 
-@login_required(login_url='manager:login')
+@login_required(login_url='login')
 @allowed_users(allowed_roles=['admin'])
 def createOrder(request, pk):
     OrderFormSet = inlineformset_factory(
@@ -123,15 +116,16 @@ def createOrder(request, pk):
     customer = get_object_or_404(Customer, id=pk)
     formset = OrderFormSet(queryset=Order.objects.none(), instance=customer)
     if request.method == 'POST':
+        form = OrderForm(request.POST)
         formset = OrderFormSet(request.POST, instance=customer)
         if formset.is_valid():
             formset.save()
-            return redirect('manager:index')
+            return redirect('index')
     context = {'formset': formset}
     return render(request, 'manager/order_form.html', context)
 
 
-@login_required(login_url='manager:login')
+@login_required(login_url='login')
 @allowed_users(allowed_roles=['admin'])
 def updateOrder(request, pk):
     order = get_object_or_404(Order, id=pk)
@@ -140,16 +134,16 @@ def updateOrder(request, pk):
         form = OrderForm(request.POST, instance=order)
         if form.is_valid():
             form.save()
-            return redirect('manager:index')
+            return redirect('index')
     context = {'form': form}
     return render(request, 'manager/order_form.html', context)
 
 
-@login_required(login_url='manager:login')
+@login_required(login_url='login')
 @allowed_users(allowed_roles=['admin'])
 def deleteOrder(request, pk):
     order = get_object_or_404(Order, id=pk)
     if request.method == 'POST':
         order.delete()
-        return redirect('manager:index')
+        return redirect('index')
     return render(request, 'manager/delete.html', {'order': order})
