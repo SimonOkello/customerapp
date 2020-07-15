@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '3=#wa8_e^)kxg*ay!4rq2-zm)oagn8ujm660-9#*^ehn)9889o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['customerapp-v1.herokuapp.com', '127.0.0.1']
 
@@ -80,25 +80,17 @@ WSGI_APPLICATION = 'customerapp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'customerapp',
-#         'USER': 'simondev',
-#         'PASSWORD': 'Private123',
-#         'HOST': 'database-1.cxqnyuqb5bww.us-east-2.rds.amazonaws.com',
-#         'PORT': '5432'
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        
-        
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'customerapp',
+        'USER': 'admin',
+        'PASSWORD': 'Private@123!',
+        'HOST': 'localhost',
+        'PORT': '5432'
     }
 }
+
 
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
