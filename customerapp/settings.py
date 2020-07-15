@@ -82,11 +82,11 @@ WSGI_APPLICATION = 'customerapp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'customerapp',
-        'USER': 'admin',
-        'PASSWORD': 'Private@123!',
-        'HOST': 'localhost',
+        'USER': 'simondev',
+        'PASSWORD': 'Private123',
+        'HOST': 'database-1.cxqnyuqb5bww.us-east-2.rds.amazonaws.com',
         'PORT': '5432'
     }
 }
