@@ -84,12 +84,23 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'customerapp',
-        'USER': 'simondev',
-        'PASSWORD': 'Private123',
-        'HOST': 'database-1.cxqnyuqb5bww.us-east-2.rds.amazonaws.com',
+        'USER': 'admin',
+        'PASSWORD': 'Private@123!',
+        'HOST': 'localhost',
         'PORT': '5432'
     }
 }
+# AWS RDS DATABASE
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'customerapp',
+#         'USER': 'simondev',
+#         'PASSWORD': 'Private123',
+#         'HOST': 'database-1.cxqnyuqb5bww.us-east-2.rds.amazonaws.com',
+#         'PORT': '5432'
+#     }
+# }
 
 
 db_from_env = dj_database_url.config(conn_max_age=600)
@@ -157,11 +168,11 @@ EMAIL_HOST_USER = 'simonokello.dev@gmail.com'
 EMAIL_HOST_PASSWORD = 'Private@123!'
 
 # S3 BUCKET CONFIGURATION
-# AWS_ACCESS_KEY_ID = 'AKIAUCMCLHWOGRGPRBNG'
-# AWS_SECRET_ACCESS_KEY = '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'
-# AWS_STORAGE_BUCKET_NAME = 'customerapp-bucket'
+AWS_ACCESS_KEY_ID = 'AKIAUCMCLHWOGRGPRBNG'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'customerapp-bucket'
 
-# AWS_S3_FILE_OVERWRITE = False
-# AWS_DEFAULT_ACL = None
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storag'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

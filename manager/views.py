@@ -100,6 +100,7 @@ def customer(request, pk):
                'total_orders': total_orders, 'myFilter': myFilter}
     return render(request, 'manager/customer.html', context)
 
+# ------------PRODUCT VIEW-----------
 
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admin'])
