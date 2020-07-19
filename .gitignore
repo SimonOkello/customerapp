@@ -24,6 +24,7 @@ static/rev-manifest.json
 temp/
 .cpython-36.pyc
 .pytest_cache/
+staticfiles/
 
 # Text backup files
 *.bak
