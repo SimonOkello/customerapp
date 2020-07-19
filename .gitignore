@@ -25,6 +25,7 @@ temp/
 .cpython-36.pyc
 .pytest_cache/
 staticfiles/
+.env
 
 # Text backup files
 *.bak
