@@ -226,6 +226,7 @@ iframe {
 
 .login100-form {
   width: 100%;
+  padding: 85px;
 }
 
 .login100-form-title {
@@ -406,6 +407,25 @@ iframe {
   display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
+  margin: 14px;
+}
+
+.flex-sb-m {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: space-between;
+  -ms-align-items: center;
+  align-items: center;
+}
+
+.p-b-11 {
+  padding-bottom: 11px;
+}
+.p-b-48 {
+  padding-bottom: 40px;
 }
 
 .login100-form-btn {
@@ -518,13 +538,12 @@ iframe {
 }
 /*LOGIN & REGISTER END */
 
-
 /* IMAGE UPLOAD */
 .btn-file {
   position: relative;
   overflow: hidden;
 }
-.btn-file input[type=file] {
+.btn-file input[type="file"] {
   position: absolute;
   top: 0;
   right: 0;
@@ -540,29 +559,28 @@ iframe {
   display: block;
 }
 
-#img-upload{
+#img-upload {
   width: 100px;
   height: 100px;
   margin-left: 30px;
-
 }
 /* RESET PASSWORD */
 .forgot {
   background-color: #fff;
   padding: 12px;
-  border: 1px solid #dfdfdf
+  border: 1px solid #dfdfdf;
 }
 
 .padding-bottom-3x {
-  padding-bottom: 72px !important
+  padding-bottom: 72px !important;
 }
 
 .card-footer {
-  background-color: #fff
+  background-color: #fff;
 }
 
 .btn {
-  font-size: 14px
+  font-size: 14px;
 }
 
 .form-control:focus {
@@ -570,5 +588,5 @@ iframe {
   background-color: #fff;
   border-color: #76b7e9;
   outline: 0;
-  box-shadow: 0 0 0 0px #28a745
+  box-shadow: 0 0 0 0px #28a745;
 }
